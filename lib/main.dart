@@ -58,8 +58,57 @@ class _InicioState extends State<Inicio> {
         //no muestra todo a menos que se configure propiedad de tamaño
         //si lo que se quiere mostrar es una lista en forma de columna
         //entonces se puede usar el widget ListView
-        body: Center(
-          child: Text("Hola"),
+
+        //en esta parte usamos una widget tipo columna
+        //con el widget children para organizar mas widgets dentro
+        //con Column se pone los widgets uno sobre otro en columnas
+        //Row maneja los elementos en filas
+        body: Column(
+          //dentro de column tenemos una propiedad de alineacion que es esta:
+          // MainAxisAlignment.center para centrar
+          // MainAxisAlignment.start para colocar en la parte incial
+          // MainAxisAlignment.end para colocar en al parte final
+          // MainAxisAlignment.spaceAround rellena los espacio entre lo que se
+          //va poniendo
+          // MainAxisAlignment.spaceBetween maneja un mismo espaciado dependiendo
+          //de la cantidad de cosas que estan en pantalla
+          //MainAxisAlignment.spaceEnvenly iguala los espacios entre lo que este
+          //en pantalla
+          //mainAxisAlignment alinea las cosas apartir del eje principal del
+          //elemento
+          mainAxisAlignment: MainAxisAlignment.center,
+          //podemos configurar el tamaño asi:
+          //con MainAxisSize.min las columnas ocupan el minimo espacio
+          //con MainAxisSize.max las columnas ocuipan el maximo espacio
+          //el eje que se modifica es el y porque es una columna (vertical)
+          //con Row se modifica es el eje x porque es una fila (horizontal)
+          mainAxisSize: MainAxisSize.min,
+          //el eje horizontal es el cross
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              //con la propiedad width : MediaQuery.. le damos un tamaño para
+              //que se ocupe  el texto del child en este caso que ocupe todo
+              //el ancho , la columna solo centra sus hijos (children)
+              width: MediaQuery.of(context).size.width,
+              //tambien podemos modificar el alto del container mediante height
+              height: 50,
+              //para centrar un texto en especifico se usa la Propiedad
+              //textAlign: TextAlign.center se especifica el center
+              child: Text(
+                "Hola 01",
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Text("Hola 1"),
+            Text("Hola 2"),
+          ],
         ));
   }
 }
+
+//el crossAxisAlignment de una fila es verticalmente
+//el mainAxisAlignment de una fila es horizontalmente
+
+//el crossAxisAlignment de una columna es horizontalmente
+//el mainAxisAlignment de una columna es verticalmente
