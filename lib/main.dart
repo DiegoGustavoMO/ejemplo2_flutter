@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 //la clase main principal que ejecuta la aplicacion al inciar es
 //en este casso MyApp , debe tener la primera letra en mayuscula
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 //con este main estoy indicando que ejecute la aplicacion principal
 
 //con la ayuda del los plugins usamos statlessW o StatefulW
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     //material tiene ciertos parametros como title,home,etc
     //title define el titulo de la aplicacion
     //home lo que aparece en el inicio de la aplicacion
-    return MaterialApp(
+    return const MaterialApp(
       //Para quitar el banner de debug usamos debugshow..
       debugShowCheckedModeBanner: false,
       title: "Filas,Columnas y botones",
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
 
 //creamos el widget Inicio() de tipo stateful
 class Inicio extends StatefulWidget {
-  Inicio({Key? key}) : super(key: key);
+  const Inicio({Key? key}) : super(key: key);
 
   @override
   _InicioState createState() => _InicioState();
@@ -45,13 +45,16 @@ class Inicio extends StatefulWidget {
 class _InicioState extends State<Inicio> {
   @override
   Widget build(BuildContext context) {
+    // definiendo el estilo  del boton de tipo elevatedbutton
+    final ButtonStyle style =
+        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
     //debemos retornar un widget usado en aplicaciones tradicionales
     //llamado Scaffold()
     //debemos recordar que hay widgets que son contenedores de otros widgets
     //por eso se ve como si fuera una clase dentro de otra clase
     return Scaffold(
         appBar: AppBar(
-          title: Text("Mi App"),
+          title: const Text("Mi App"),
         ),
         //el widget comlum sirve para organizar los demas widgets en columnas
         //el limitante es que al agregar contenido dependiendo de la pantalla
@@ -95,13 +98,43 @@ class _InicioState extends State<Inicio> {
               height: 50,
               //para centrar un texto en especifico se usa la Propiedad
               //textAlign: TextAlign.center se especifica el center
-              child: Text(
+              child: const Text(
                 "Hola 01",
                 textAlign: TextAlign.center,
               ),
             ),
-            Text("Hola 1"),
-            Text("Hola 2"),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              // se usa el widget elevatebuttom para un botones
+              //con el parametro style se llama  al style una clase
+              //que define el estilo del boton que esta mas arriba y es de tipo
+              //final porque no cambia
+              child: ElevatedButton(
+                style: style,
+                //puedo variar entre  Row y Column para cambiar posiciones de texto e icono
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Icon(Icons.access_time),
+                    SizedBox(
+                      width: 10,
+                      height: 10,
+                    ),
+                    Text("AHORA"),
+                  ],
+                ),
+                onPressed: () {
+                  //aqui coloco lo que quiero que pase al pulsar el boton
+                  //esta parte es funcionalidad del boton
+                  //creo una variable que guarda el resultado de DateTime
+                  //que obtiene la fecha del momento cuando se dio click al boton
+                  var t = DateTime.now();
+                  print(t);
+                },
+              ),
+            ),
+            const Text("Hola 1"),
+            const Text("Hola 2"),
           ],
         ));
   }
