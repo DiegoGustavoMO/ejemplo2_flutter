@@ -56,7 +56,7 @@ class _InicioState extends State<Inicio> {
         appBar: AppBar(
           title: const Text("Mi App"),
         ),
-        //el widget comlum sirve para organizar los demas widgets en columnas
+        //el widget column sirve para organizar los demas widgets en columnas
         //el limitante es que al agregar contenido dependiendo de la pantalla
         //no muestra todo a menos que se configure propiedad de tamaño
         //si lo que se quiere mostrar es una lista en forma de columna
@@ -82,7 +82,7 @@ class _InicioState extends State<Inicio> {
           mainAxisAlignment: MainAxisAlignment.center,
           //podemos configurar el tamaño asi:
           //con MainAxisSize.min las columnas ocupan el minimo espacio
-          //con MainAxisSize.max las columnas ocuipan el maximo espacio
+          //con MainAxisSize.max las columnas ocupan el maximo espacio
           //el eje que se modifica es el y porque es una columna (vertical)
           //con Row se modifica es el eje x porque es una fila (horizontal)
           mainAxisSize: MainAxisSize.min,
